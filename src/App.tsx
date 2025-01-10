@@ -70,24 +70,24 @@ const App: React.FC = () => {
 
   const columns: GridColDef[] = [
     { field: "date", headerName: "Date", width: 150 },
-    { field: "revenue", headerName: "Revenue", width: 150, type: "number" },
+    { field: "revenue", headerName: "Revenue", width: 200, type: "number" },
     {
       field: "netIncome",
       headerName: "Net Income",
-      width: 150,
+      width: 200,
       type: "number",
     },
     {
       field: "grossProfit",
       headerName: "Gross Profit",
-      width: 150,
+      width: 200,
       type: "number",
     },
-    { field: "eps", headerName: "EPS", width: 120, type: "number" },
+    { field: "eps", headerName: "EPS", width: 150, type: "number" },
     {
       field: "operatingIncome",
       headerName: "Operating Income",
-      width: 180,
+      width: 250,
       type: "number",
     },
   ];
@@ -181,24 +181,24 @@ const App: React.FC = () => {
         </button>
       </div>
 
-      <div style={{ height: 500, width: "100%", marginTop: "20px" }}>
-        <DataGrid
-          rows={filteredRows}
-          columns={columns.map((col) => ({
-            ...col,
-            flex: 1,
-          }))}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 5,
+      {/* Horizontal Scroll on Mobile */}
+      <div className="overflow-x-auto">
+        <div style={{ height: 500, minWidth: 900 }}>
+          <DataGrid
+            rows={filteredRows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 5,
+                },
               },
-            },
-          }}
-          checkboxSelection
-          disableRowSelectionOnClick
-          autoHeight
-        />
+            }}
+            checkboxSelection
+            disableRowSelectionOnClick
+            autoHeight
+          />
+        </div>
       </div>
     </div>
   );
